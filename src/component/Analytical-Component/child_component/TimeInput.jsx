@@ -2,7 +2,11 @@ import { Button } from "../../Headless/Button/Button";
 import ButtonStyle from "../../presentation/ButtonStyle";
 
 const { buttonStyle } = ButtonStyle()
-function logChoice(input) {
+// function logChoice(input) {
+//     console.log(input)
+// }
+
+const logChoice = (input)=> {
     console.log(input)
 }
 const TimeInput = ({ modeArray }) => {

@@ -13,6 +13,7 @@ import { data_lvlThree, options_lvlThree } from "../Analytical-Component/dummy_d
 import TimeInput from "./child_component/TimeInput"
 import { dataDonorRegistration, optionsDonorRegistration } from "./dummy_dataDonorRegistration"
 import ModalStyle from "../presentation/ModalStyle";
+import {UserDefinedCombobox} from "../Headless/Combox/UserDefinedCombobox"
 import CardStyle from "../presentation/CardStyle";
 const Analytical = () => {
     Chart.register(CategoryScale);
@@ -23,6 +24,8 @@ const Analytical = () => {
         defaultTitleClass } = ModalStyle()
 
     const { styleClass, titleClass } = CardStyle()
+
+    const alertFunction = (input) =>{alert(input)}
     // const { totalProject, fetchTotalProjectNum, setTotalProject } = useGetNumericalAnalytic(getTotalProject)
     // const { totalDonation, fetchTotalDonation, setTotalDonation } = useGetNumericalAnalytic(getTotalDonation)
     return (
@@ -109,19 +112,29 @@ const Analytical = () => {
                                 mx-auto p-4
                                 gap-80
                              ">
-                            <HeadlessCard
-                                styleClass={styleClass}
-                                titleClass={titleClass}
-
+                              <HeadlessCard
                                 header="Total projects and donation count of a donor"
-                                interact={<Modal modalTitle="Total projects and donation count of a donor"
-                                    modalContent={
-                                        <InputGroup
-                                            label="Donor ID"
-                                            name="Donor ID"
-                                            type="text"
-                                            placeholder="Enter the ID of the interested Donor here"
-                                            required={true} />} />}
+                                interact={
+                                    <Modal modalTitle="Total projects and donation count of a donor"
+                                        modalButtonLabel={defaultButtonLabel}
+                                        modalButtonClassName={defaultButtonClass}
+                                        modalClassName={defaultModalClass}
+                                        modalPanelClassName={defaultPanelClass}
+                                        modalTitleClassName={defaultTitleClass}
+                                        modalContent={
+                                            <UserDefinedCombobox
+                                            placeholder="Enter user's email here"
+                                            data={[
+                                                { id: 0, name: 'orange' },
+                                                { id: 1, name: 'purple' },
+                                                { id: 2, name: 'red' },
+                                                { id: 3, name: 'blue' },]}
+                                            dataKey='id'
+                                            containerClassName={"flex justify-center"}
+                                            textField={'name'}
+                                            handleFunction={ alertFunction}
+                                        />}
+                                    />}
                                 body={
 
 
@@ -129,27 +142,40 @@ const Analytical = () => {
                                         { label: 'Total Project', key: 'sumProject' },
                                         { label: 'Donation count', key: 'countDonation' },
                                     ]}
-                                        data={[
-                                            { sumProject: 12, countDonation: 25 },
-                                        ]} />
+                                    data={[
+                                        { sumProject: 12, raisedDonation: 25 },
+                                    ]} 
+                                        errorMessage={"No donor has been chosen, please do so"}/>
                                 }
                                 width="w-80"
+                                styleClass={styleClass}
+                                titleClass={titleClass}
 
                             />
 
                             <HeadlessCard
-                                styleClass={styleClass}
-                                titleClass={titleClass}
-
                                 header="Total projects and donation count of a charity"
-                                interact={<Modal modalTitle="Total projects and donation count of a charity"
-                                    modalContent={
-                                        <InputGroup
-                                            label="Charity ID"
-                                            name="Charity ID"
-                                            type="text"
-                                            placeholder="Enter the ID of the interested Charity here"
-                                            required={true} />} />}
+                                interact={
+                                    <Modal modalTitle="Total projects and donation count of a charity"
+                                        modalButtonLabel={defaultButtonLabel}
+                                        modalButtonClassName={defaultButtonClass}
+                                        modalClassName={defaultModalClass}
+                                        modalPanelClassName={defaultPanelClass}
+                                        modalTitleClassName={defaultTitleClass}
+                                        modalContent={
+                                            <UserDefinedCombobox
+                                            placeholder="Enter user's email here"
+                                            data={[
+                                                { id: 0, name: 'orange' },
+                                                { id: 1, name: 'purple' },
+                                                { id: 2, name: 'red' },
+                                                { id: 3, name: 'blue' },]}
+                                            dataKey='id'
+                                            containerClassName={"flex justify-center"}
+                                            textField={'name'}
+                                            handleFunction={alertFunction}
+                                        />}
+                                    />}
                                 body={
 
 
@@ -157,14 +183,16 @@ const Analytical = () => {
                                         { label: 'Total Project', key: 'sumProject' },
                                         { label: 'Donation raised', key: 'raisedDonation' },
                                     ]}
-                                        data={[
-                                            { sumProject: 12, raisedDonation: 25 },
-                                        ]} />
+                                    data={[
+                                        { sumProject: 12, raisedDonation: 25 },
+                                    ]} 
+                                        errorMessage={"No charity has been chosen, please do so"}/>
                                 }
                                 width="w-80"
+                                styleClass={styleClass}
+                                titleClass={titleClass}
 
                             />
-
 
                         </div>
 

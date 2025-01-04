@@ -8,11 +8,11 @@ const HeadlessCombobox = ({ children,...props}) => {
     const handleChange = (value) => {
         setValue(value);
     };
-   //  console.log(props.name + ": " + value)
+   //console.log(props.name + ": " + value)
 
 
    const handleSelect = (value) => {
-            props.handleFunction(value.userId)
+            props.handleFunction(value.name)
    };
     
     return children({

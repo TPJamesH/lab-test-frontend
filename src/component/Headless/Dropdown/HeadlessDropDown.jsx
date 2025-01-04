@@ -5,7 +5,6 @@ const HeadlessDropDown = ({ choice, children }) => {
   
     const handleChange = (e) => {
       setSelectedValue(e.target.value);
-      console.log(selectedValue)
     };
   
     return children({
