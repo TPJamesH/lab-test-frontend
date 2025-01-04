@@ -7,7 +7,6 @@ function HeadlessInput({ children, ...props }) {
     const handleChange = (e) => {
         setValue(e.target.value);
     };
-   //  console.log(props.name + ": " + value)
 
     
     return children({

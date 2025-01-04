@@ -1,3 +1,4 @@
+//Destructured directly from function parameter
 const HeadlessCard = ({ header, body, width, height, interact, extraStyle, styleClass, titleClass}) => {
 
     if (width) {
